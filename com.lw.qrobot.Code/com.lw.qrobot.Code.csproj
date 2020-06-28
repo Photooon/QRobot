@@ -64,6 +64,8 @@
     <Compile Include="GroupMsg.cs" />
     <Compile Include="PrivateMsg.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="App\Punch.cs" />
+    <Compile Include="Model\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Native.Sdk\Native.Sdk.csproj">

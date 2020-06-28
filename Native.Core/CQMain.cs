@@ -21,6 +21,7 @@ namespace Native.Core
 		public static void Register (IUnityContainer unityContainer)
 		{
 			unityContainer.RegisterType<IPrivateMessage, Event_PrivateMessage>("私聊消息处理");
+			unityContainer.RegisterType<IGroupMessage, Event_GroupMessage>("群消息处理");
 		}
 	}
 }
