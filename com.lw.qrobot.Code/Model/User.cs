@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using Native.Sdk.Cqp.EventArgs;
 using Native.Sdk.Cqp.Interface;
 using Native.Sdk.Cqp.Model;
+using com.lw.qrobot.Code.App;
 
 namespace com.lw.qrobot.Code
 {
-    public enum App
+    public enum AppState
     {
         Sleep,      //未启动应用
         Punch,      //启动了猜拳应用
@@ -17,7 +18,7 @@ namespace com.lw.qrobot.Code
 
     public class User
     {
-        public App appState;
+        public AppState appState;
         public QQ qq;
         public long id;
         public CQCode atName;
@@ -28,7 +29,7 @@ namespace com.lw.qrobot.Code
 
         public User(QQ q)
         {
-            appState = App.Sleep;
+            appState = AppState.Sleep;
             qq = q;
             id = q.Id;
             atName = q.CQCode_At();
@@ -44,12 +45,12 @@ namespace com.lw.qrobot.Code
             inputMsg = e.Message;
             e.Handler = true;       // 设置该属性, 表示阻塞本条消息, 该属性会在方法结束后传递给酷Q
 
-            if (appState == App.Sleep)
+            if (appState == AppState.Sleep)
             {
                 if (inputMsg == "猜拳")
                 {
-                    appState = App.Punch;
-                    punch.Start();
+                    appState = AppState.Punch;
+                    punch.Update("#Start");
                     outputMsg.AddRange(punch.outputMsg);
                     punch.outputMsg.Clear();
                 }
@@ -59,13 +60,13 @@ namespace com.lw.qrobot.Code
             {
                 switch (appState)       //将输入信息传给应用
                 {
-                    case App.Punch:
+                    case AppState.Punch:
                         punch.Update(inputMsg);
                         outputMsg.AddRange(punch.outputMsg);
                         punch.outputMsg.Clear();
-                        if (punch.finished)
+                        if (punch.Finished)
                         {
-                            appState = App.Sleep;
+                            appState = AppState.Sleep;
                         }
                         break;
                     default:

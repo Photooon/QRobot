@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\App.cs" />
     <Compile Include="GroupMsg.cs" />
     <Compile Include="PrivateMsg.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

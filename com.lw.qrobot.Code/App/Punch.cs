@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace com.lw.qrobot.Code
+namespace com.lw.qrobot.Code.App
 {
     public enum PunchState
     {
@@ -14,7 +14,7 @@ namespace com.lw.qrobot.Code
         OutputPunch,
     }
 
-    public class Punch
+    public class Punch: App
     {
         public int score = 0;
         public string[] punchStr = { "石头", "剪刀", "布" };
@@ -24,18 +24,31 @@ namespace com.lw.qrobot.Code
         public bool finished = false;
         public List<string> outputMsg = new List<string>();
 
-        public void Start()
+        public override bool Finished
         {
-            score = 0;
-            outputMsg.Add("我准备好了，出拳吧！😊");
-            finished = false;
-            state = PunchState.WaitForInput;
+            get
+            {
+                return finished;
+            }
+            set
+            {
+                finished = value;
+            }
         }
 
-        public void Update(string msg)
+        public override void Update(string msg)
         {
             switch (state)      //这里的state是上一个状态，结合msg信息更新状态并给出回复
             {
+                case PunchState.Sleep:
+                    if (msg == "#Start")
+                    {
+                        score = 0;
+                        outputMsg.Add("我准备好了，出拳吧！😊");
+                        finished = false;
+                        state = PunchState.WaitForInput;
+                    }
+                    break;
                 case PunchState.WaitForInput:       //上一个状态时等待输入，那么这次的msg就是输入
                     if (msg.Contains("不猜拳"))
                     {
