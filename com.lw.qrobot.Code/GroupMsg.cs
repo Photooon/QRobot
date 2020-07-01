@@ -37,6 +37,7 @@ namespace com.lw.qrobot.Code
             else
             {
                 user = users[e.FromQQ.Id];
+                user.group = e.FromGroup;   //更新group
                 user.Update(e);
             }
 
