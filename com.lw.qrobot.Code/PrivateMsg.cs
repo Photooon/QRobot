@@ -34,16 +34,7 @@ namespace com.lw.qrobot.Code
                 user.Update(e);
             }
 
-            user.Output();
+            user.OutputPrivateMsg();
         }
-    }
-
-    public enum State
-    {
-        Sleep,                    //睡眠
-        Error,                    //发生错误
-        WaitForPunchInput,        //等待用户出拳
-        WaitForPunchOutput,       //等待电脑出拳
-        WaitForPunchScoreOutput,  //等待查看猜拳分数
     }
 }

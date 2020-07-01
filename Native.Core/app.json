@@ -5,11 +5,11 @@
 {
 	"ret": 1,
 	"apiver": 9,
-	"name": "神奇海螺",
+	"name": "小海螺",
 	"version": "1.0.0",
 	"version_id": 1,
 	"author": "JieGG",
-	"description": "有问题为什么不问问神奇海螺呢？",
+	"description": "有问题为什么不问问小海螺呢？",
 	"event": [
 		{
 			"id": 1,

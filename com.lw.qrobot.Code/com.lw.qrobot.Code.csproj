@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App\App.cs" />
+    <Compile Include="App\Translater.cs" />
     <Compile Include="GroupMsg.cs" />
     <Compile Include="PrivateMsg.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

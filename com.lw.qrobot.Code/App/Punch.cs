@@ -16,13 +16,13 @@ namespace com.lw.qrobot.Code.App
 
     public class Punch: App
     {
-        public int score = 0;
-        public string[] punchStr = { "石头", "剪刀", "布" };
-        public PunchState state = PunchState.Sleep;
-        public int input = 0;
-        public int output = 0;
-        public bool finished = false;
-        public List<string> outputMsg = new List<string>();
+        private int score = 0;
+        private string[] punchStr = { "石头", "剪刀", "布" };
+        private PunchState state = PunchState.Sleep;
+        private int input = 0;
+        private int output = 0;
+        private bool finished = false;
+        private List<string> outputMsg = new List<string>();
 
         public override bool Finished
         {
@@ -30,9 +30,13 @@ namespace com.lw.qrobot.Code.App
             {
                 return finished;
             }
-            set
+        }
+
+        public override List<string> OutputMsg
+        {
+            get
             {
-                finished = value;
+                return outputMsg;
             }
         }
 
@@ -80,6 +84,11 @@ namespace com.lw.qrobot.Code.App
                 default:
                     break;
             }
+        }
+
+        public override void ClearOutputMsg()
+        {
+            outputMsg.Clear();
         }
 
         public bool isLegalInput(string m)
