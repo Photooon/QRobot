@@ -17,7 +17,7 @@ namespace com.lw.qrobot.Code.App
     public class Punch: App
     {
         private int score = 0;
-        private string[] punchStr = { "石头", "剪刀", "布" };
+        private string[] punchStr = { "👊", "✌", "🖐" };
         private PunchState state = PunchState.Sleep;
         private int input = 0;
         private int output = 0;
